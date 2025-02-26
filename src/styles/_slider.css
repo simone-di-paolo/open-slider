@@ -1,0 +1,37 @@
+.open-slider-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    min-height: 250px;
+    position: relative;
+}
+
+.open-slide-wrapper {
+    flex-shrink: 0;
+    width: 500px;
+    background-color: red;
+    height: 300px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
