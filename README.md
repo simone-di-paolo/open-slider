@@ -6,7 +6,7 @@
 
 ## Description
 
-React Open Slider is a lightweight and highly customizable slider component for React applications. It's designed to be easy to integrate and adapt to various use cases, whether you need a simple image carousel or a more complex content slider.
+React Open Slider **will be** a lightweight and highly customizable slider component for React applications. It's designed to be easy to integrate and adapt to various use cases, whether you need a simple image carousel or a more complex content slider.
 
 ## Features
 
@@ -16,7 +16,6 @@ React Open Slider is a lightweight and highly customizable slider component for 
 *   **Vite-Powered:** Leverages the speed and efficiency of Vite for development.
 *   **Accessible:** Built with accessibility in mind, ensuring usability for all.
 * **Dynamic slides:** You can pass any number of slides and it will render.
-* **Default Slides:** If you pass an empty array of slides, it will show some default slides.
 
 ## Tech Stack
 
@@ -26,4 +25,4 @@ React Open Slider is a lightweight and highly customizable slider component for 
 
 ## Installation
 
-1.  **Install:**
+1.  **Install:** Work in progress...
