@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**A flexible and customizable slider component built with React.**
+**A flexible and customizable Open Source slider component built with React.**
 
 ## Description
 
