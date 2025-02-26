@@ -1,20 +1,3 @@
-.open-slider-wrapper {
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-    min-height: 250px;
-    position: relative;
-}
-
-.open-slide-wrapper {
-    flex-shrink: 0;
-    width: 500px;
-    background-color: red;
-    height: 300px;
-    transition: transform 0.5s ease-in-out;
-}
-
 .prev-button,
 .next-button {
     position: absolute;

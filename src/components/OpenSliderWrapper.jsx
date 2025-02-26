@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import '../styles/_openSliderWrapper.css';
 
 const OpenSliderWrapper = ({
     startFromIndex = 0,
+    oneOpenSlidePerView,
     children
 }) => {
     const [currentSlide, setCurrentSlide] = useState(startFromIndex);
@@ -20,13 +22,20 @@ const OpenSliderWrapper = ({
         );
     };
 
+    const slideClassHandler = (index) => {
+        let classModifier = "slide";
+        if (oneOpenSlidePerView) {
+            classModifier = "slide invisible-slide"
+        } 
+        return classModifier;
+    }
+
     return (
         <div className="open-slider-wrapper">
-            {slides.map((slide, index) => (
+            {slides.map((slide, index) => (                 
                 <div
                     key={index}
-                    className={`slide ${index === currentSlide ? 'active' : ''}`}
-                    style={{ display: index === currentSlide ? 'block' : 'none' }}
+                    className={`${slideClassHandler()} ${index === currentSlide ? 'active' : ''}`}                    
                 >
                     {slide}
                 </div>

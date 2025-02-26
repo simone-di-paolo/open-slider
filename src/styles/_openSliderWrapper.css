@@ -1,0 +1,39 @@
+.open-slider-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 250px;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    gap: 20px;
+}
+
+.slide {
+    flex-shrink: 0;
+    width: 500px;
+    background-color: red;
+    height: 300px;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 25px;
+    transition: transform 0.5s ease-in-out; /* Add a smooth transition */
+
+    &.invisible-slide {
+        display: none;
+    }
+
+    &.next {
+        transform: translateX(100%);
+    }
+
+    &.prev {
+        transform: translateX(-100%);
+    }
+
+    &.active {
+        display: block;
+        width: 530px;
+        height: 330px;
+    }
+}
