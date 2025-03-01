@@ -26,7 +26,8 @@ function OpenSlider({
   useDefaulSlidesAsExample = true,
   currentSlide,
   oneOpenSlidePerView = false,
-  loopSlides = true
+  loopSlides = true,
+  hidePagination = true,
 }) {
   
   if ((!openSlides || openSlides.length === 0) && useDefaulSlidesAsExample) {
@@ -40,10 +41,11 @@ function OpenSlider({
   }
 
   return (
-    <OpenSliderWrapper 
+    <OpenSliderWrapper
       startFromIndex = {startFromIndex}
       oneOpenSlidePerView = {oneOpenSlidePerView}
-      loopSlides={loopSlides}>
+      loopSlides={loopSlides}
+      hidePagination={hidePagination}>
       {
         openSlides.map((slide, index) => (
           <OpenSlide

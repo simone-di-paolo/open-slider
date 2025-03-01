@@ -6,6 +6,7 @@ const OpenSliderWrapper = ({
     startFromIndex = 0,
     oneOpenSlidePerView,
     loopSlides,
+    hidePagination,
     children
 }) => {
     const [currentSlide, setCurrentSlide] = useState(startFromIndex);
@@ -19,7 +20,6 @@ const OpenSliderWrapper = ({
     
     const previousSlide = () => {
         setCurrentSlide((prevSlide) =>
-            
            prevSlide === 0 && !loopSlides ? prevSlide : prevSlide === 0 && loopSlides ? slideCount - 1 : prevSlide - 1
         );
         
@@ -27,7 +27,7 @@ const OpenSliderWrapper = ({
             const totalWidth = slides.reduce((sum, slide) => {
                 return sum + activeSlideRef.current.offsetWidth
             },0)
-            if (slideContainerRef.current && !oneOpenSlidePerView) {
+            if (currentSlide !== 1 && slideContainerRef.current && !oneOpenSlidePerView) {
                 slideContainerRef.current.style.transition = 'transform 0.5s ease-in-out';
                 const slideWidth = activeSlideRef.current.offsetWidth;
                 slideContainerRef.current.style.transform = `translate3d(-${totalWidth - slideWidth}px, 0, 0)`;
@@ -88,6 +88,21 @@ const OpenSliderWrapper = ({
             </div>
             <button className="prev-button" onClick={previousSlide}>Previous</button>
             <button className="next-button" onClick={nextSlide}>Next</button>
+        {
+            hidePagination ? (
+                <div className="open-slider-pagination-wrapper">
+                    {
+                        slides.map((slides, index) => (
+                            <button 
+                                key={`pagination-${index}`}
+                                className={`open-slider-pagination-button ${index === currentSlide ? 'active' : ''}`}
+                                //onClick={() => setCurrentSlide(index)}
+                            />
+                        ))
+                    }
+                </div>
+            ) : null
+        }
         </div>
     );
 };
