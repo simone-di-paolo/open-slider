@@ -18,19 +18,19 @@ const OpenSliderWrapper = ({
     
 
     
-    const previousSlide = () => {
+      const previousSlide = () => {
         setCurrentSlide((prevSlide) =>
-           prevSlide === 0 && !loopSlides ? prevSlide : prevSlide === 0 && loopSlides ? slideCount - 1 : prevSlide - 1
+            prevSlide === 0 && !loopSlides ? prevSlide : prevSlide === 0 && loopSlides ? slideCount - 1 : prevSlide - 1
         );
-        
-        if(currentSlide === 0 && loopSlides){
+
+        if (currentSlide === 0 && loopSlides) {
             const totalWidth = slides.reduce((sum, slide) => {
                 return sum + activeSlideRef.current.offsetWidth
-            },0)
-            if (currentSlide !== 1 && slideContainerRef.current && !oneOpenSlidePerView) {
+            }, 0)
+            if (slideContainerRef.current && !oneOpenSlidePerView) {
                 slideContainerRef.current.style.transition = 'transform 0.5s ease-in-out';
                 const slideWidth = activeSlideRef.current.offsetWidth;
-                slideContainerRef.current.style.transform = `translate3d(-${totalWidth - slideWidth}px, 0, 0)`;
+                slideContainerRef.current.style.transform = `translate3d(-${totalWidth - slideWidth}px, 0, 0)`;   
             }
         } else if (currentSlide !== 0 && !oneOpenSlidePerView){
             if (slideContainerRef.current && !oneOpenSlidePerView) {
@@ -46,21 +46,40 @@ const OpenSliderWrapper = ({
                     }
                 }
                 slideContainerRef.current.style.transform = `translate3d(${currentTranslateX + slideWidth}px, 0, 0)`;                
-            }
+            }            
         }
-        
-
     };
 
-    const nextSlide = () => {
+    const nextSlide = () => {        
+        setCurrentSlide((prevSlide) => {
+            if (prevSlide === slideCount - 1 && !loopSlides) {
+                return prevSlide;
+            } else if (prevSlide === slideCount - 1 && loopSlides) {
+                return 0;
+            } else {
+                return prevSlide + 1;
+            }
+        });
 
-        setCurrentSlide((prevSlide) =>
-            prevSlide === slideCount - 1 ? (loopSlides ? 0 : prevSlide) : prevSlide + 1
-        );
-        if (slideContainerRef.current && !oneOpenSlidePerView) {
-            slideContainerRef.current.style.transition = 'transform 0.5s ease-in-out';
-            const slideWidth = activeSlideRef.current.offsetWidth;
-            slideContainerRef.current.style.transform = `translate3d(-${slideWidth * 1}px, 0, 0)`;
+        if (currentSlide === slideCount - 1 && loopSlides) {
+            if (slideContainerRef.current && !oneOpenSlidePerView) {
+                slideContainerRef.current.style.transition = 'transform 0.5s ease-in-out';
+                slideContainerRef.current.style.transform = `translate3d(0px, 0, 0)`;
+            }
+        } else if (currentSlide !== slideCount - 1 && !oneOpenSlidePerView) {
+            if (slideContainerRef.current && !oneOpenSlidePerView) {
+                slideContainerRef.current.style.transition = 'transform 0.5s ease-in-out';
+                const slideWidth = activeSlideRef.current.offsetWidth;
+                const currentTransform = slideContainerRef.current.style.transform;
+                let currentTranslateX = 0;
+                if (currentTransform) {
+                    const match = currentTransform.match(/translate3d\((-?\d+)px/);
+                    if (match) {
+                        currentTranslateX = parseInt(match[1], 10);
+                    }
+                }
+                slideContainerRef.current.style.transform = `translate3d(${currentTranslateX - slideWidth}px, 0, 0)`;
+            }
 
         }
 
