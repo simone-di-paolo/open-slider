@@ -1,6 +1,6 @@
 .open-slider-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     overflow: hidden;
     min-height: 250px;
@@ -8,6 +8,16 @@
     width: 100%;
     height: 600px;
     gap: 20px;
+
+    .open-slider-container {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+        justify-content: center;
+        min-width: max-content;
+        transition: transform 0.5s ease-in-out;
+    }
 }
 
 .slide {
