@@ -17,6 +17,11 @@
         justify-content: center;
         min-width: max-content;
         transition: transform 0.5s ease-in-out;
+
+        &.slide-centered {
+            align-items: center;
+            width: 100%;
+        }
     }
 }
 
