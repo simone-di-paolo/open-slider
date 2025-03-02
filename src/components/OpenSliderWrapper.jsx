@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import '../styles/_openSliderWrapper.css';
-import { useEffect } from 'react';
 
 const OpenSliderWrapper = ({
     startFromIndex = 0,
     oneOpenSlidePerView,
     loopSlides,
     hidePagination,
+    carouselType,
     children
 }) => {
     const [currentSlide, setCurrentSlide] = useState(startFromIndex);
@@ -98,9 +98,33 @@ const OpenSliderWrapper = ({
         return classModifier;
     }
 
+    const sliderClassModifier = () => {
+        let sliderClassModifierType = '';
+        
+        switch (carouselType) {
+            case 'accordion': {
+                sliderClassModifierType = 'accordion';
+                break;
+            }
+            case 'full-width-slide': {
+                sliderClassModifierType = 'full-width-slide';
+                // forced to true
+                oneOpenSlidePerView = true;
+                break;
+            }
+            case '': {
+                // empty, like the default
+            }
+            default: {
+                break;
+            }
+        }
+        return sliderClassModifierType;
+    }
+
     return (
         <div className="open-slider-wrapper">
-            <div className={`open-slider-container ${oneOpenSlidePerView ? 'slide-centered' : ''}`} ref={slideContainerRef}>
+            <div className={`open-slider-container ${sliderClassModifier()} ${oneOpenSlidePerView ? 'slide-centered' : ''}`} ref={slideContainerRef}>
                 {slides.map((slide, index) => (                 
                     <div
                         key={index}

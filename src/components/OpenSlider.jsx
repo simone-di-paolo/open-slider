@@ -28,6 +28,7 @@ function OpenSlider({
   oneOpenSlidePerView = false,
   loopSlides = true,
   hidePagination = true,
+  carouselType = '',
 }) {
   
   if ((!openSlides || openSlides.length === 0) && useDefaulSlidesAsExample) {
@@ -45,7 +46,8 @@ function OpenSlider({
       startFromIndex = {startFromIndex}
       oneOpenSlidePerView = {oneOpenSlidePerView}
       loopSlides={loopSlides}
-      hidePagination={hidePagination}>
+      hidePagination={hidePagination}
+      carouselType={carouselType}>
       {
         openSlides.map((slide, index) => (
           <OpenSlide
