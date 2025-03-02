@@ -1,8 +1,9 @@
-# React Open Slider
+# React Open Slider - Still in development
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **A flexible and customizable Open Source slider component built with React.**
+**Collab if you want!**
 
 ## Description
 
