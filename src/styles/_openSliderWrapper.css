@@ -6,7 +6,7 @@
     min-height: 250px;
     position: relative;
     width: 100%;
-    min-height: max-content;
+    min-height: 400px;
     gap: 20px;
 
     .open-slider-container {
@@ -16,7 +16,7 @@
         align-items: center;
         justify-content: center;
         min-width: max-content;
-        transition: transform 0.5s ease-in-out;
+        transition: 0.5s ease-in-out;
 
         &.slide-centered {
             align-items: center;
@@ -60,7 +60,7 @@
     height: 300px;
     transition: transform 0.5s ease-in-out;
     border-radius: 25px;
-    transition: transform 0.5s ease-in-out; /* Add a smooth transition */
+    transition: 0.5s ease-in-out; /* Add a smooth transition */
 
     &.invisible-slide {
         display: none;
